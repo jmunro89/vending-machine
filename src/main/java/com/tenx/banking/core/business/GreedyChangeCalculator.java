@@ -6,10 +6,12 @@ import static com.tenx.banking.core.model.Coin.coins;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Map;
 
 import com.tenx.banking.core.model.Coin;
 
 public class GreedyChangeCalculator implements ChangeCalculator {
+
     @Override
     public Collection<Coin> getOptimalChangeFor(int pence) {
         Collection<Coin> availableCoins = coins();
@@ -32,7 +34,7 @@ public class GreedyChangeCalculator implements ChangeCalculator {
     }
 
     @Override
-    public Collection<Coin> getChangeFor(int pence) {
+    public Collection<Coin> calculate(int pence, Map<Coin, Integer> coinInventory) {
         return null;
     }
 }

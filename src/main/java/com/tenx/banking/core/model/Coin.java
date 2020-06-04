@@ -3,6 +3,7 @@ package com.tenx.banking.core.model;
 import static java.util.Arrays.stream;
 
 import java.util.Collection;
+import java.util.StringJoiner;
 import java.util.stream.Collectors;
 
 public enum Coin {
@@ -21,7 +22,13 @@ public enum Coin {
     }
 
     public static Collection<Coin> coins() {
-        return stream(values())
-                .collect(Collectors.toList());
+        return stream(values()).collect(Collectors.toList());
+    }
+
+    @Override
+    public String toString() {
+        return new StringJoiner(", ", Coin.class.getSimpleName() + "[", "]")
+                .add("denomination=" + denomination)
+                .toString();
     }
 }
