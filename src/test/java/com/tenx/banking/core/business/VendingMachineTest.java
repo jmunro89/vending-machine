@@ -7,7 +7,6 @@ import static com.tenx.banking.core.model.Coin.ONE_PENNY;
 import static com.tenx.banking.core.model.Coin.ONE_POUND;
 import static com.tenx.banking.core.model.Coin.TWO_PENCE;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -44,12 +43,18 @@ class VendingMachineTest {
     }
 
     @Test
+    public void shouldGetOptimalChangeByCalculatingWithoutCoinInventory() {
+        this.vendingMachine.getOptimalChangeFor(A_PENNY);
+        verify(this.changeCalculator).calculate(A_PENNY);
+    }
+
+    @Test
     public void shouldCalculateUsingCoinsFromInventory() {
         when(this.inventoryManager.getCoins()).thenReturn(coinInventory);
 
-        vendingMachine.getChangeFor(A_PENNY);
+        this.vendingMachine.getChangeFor(A_PENNY);
         verify(this.changeCalculator).calculate(A_PENNY, coinInventory);
-        verify(this.inventoryManager, times(2)).getCoins();
+        verify(this.inventoryManager).getCoins();
     }
 
     @Test
@@ -78,9 +83,9 @@ class VendingMachineTest {
         when(this.inventoryManager.getCoins()).thenReturn(coinInventory);
         when(this.changeCalculator.calculate(A_PENNY, coinInventory)).thenReturn(change);
 
-        vendingMachine.getChangeFor(A_PENNY);
+        this.vendingMachine.getChangeFor(A_PENNY);
 
-        verify(inventoryManager).setCoins(expectedUpdatedInventory);
+        verify(this.inventoryManager).setCoins(expectedUpdatedInventory);
     }
 
 }

@@ -2,7 +2,6 @@ package com.tenx.banking.core.business;
 
 import java.util.Collection;
 import java.util.Map;
-import java.util.Properties;
 
 import com.tenx.banking.core.model.Coin;
 import com.tenx.banking.core.state.CoinInventoryManager;
@@ -18,19 +17,23 @@ public class VendingMachine {
     }
 
     public VendingMachine() {
-        this(new PropertiesFileManager(new Properties()), new GreedyChangeCalculator());
+        this(new PropertiesFileManager(), new GreedyChangeCalculator());
+    }
+
+    public Collection<Coin> getOptimalChangeFor(int pence) {
+        return this.changeCalculator.calculate(pence);
     }
 
     public Collection<Coin> getChangeFor(int pence) {
         Map<Coin, Integer> coinInventory = coinInventoryManager.getCoins();
-        Collection<Coin> change = this.changeCalculator.calculate(pence, coinInventoryManager.getCoins());
-        Map<Coin, Integer> updatedInventory = subtractChangeFromInventory(coinInventory, change);
+        Collection<Coin> change = this.changeCalculator.calculate(pence, coinInventory);
+        Map<Coin, Integer> updatedInventory = takeChangeFromInventory(coinInventory, change);
         coinInventoryManager.setCoins(updatedInventory);
         return change;
     }
 
-    private Map<Coin, Integer> subtractChangeFromInventory(Map<Coin, Integer> coinInventory, Collection<Coin> change) {
-        change.forEach(coin -> coinInventory.put(coin, coinInventory.get(coin) -1));
+    private Map<Coin, Integer> takeChangeFromInventory(Map<Coin, Integer> coinInventory, Collection<Coin> change) {
+        change.forEach(coin -> coinInventory.put(coin, coinInventory.getOrDefault(coin, 1) - 1));
         return coinInventory;
     }
 }

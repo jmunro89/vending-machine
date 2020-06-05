@@ -28,6 +28,10 @@ public class PropertiesFileManager implements CoinInventoryManager {
         this.properties = properties;
     }
 
+    public PropertiesFileManager() {
+        this(new Properties());
+    }
+
     @Override
     public Map<Coin, Integer> getCoins() {
         try {
