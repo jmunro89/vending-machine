@@ -33,6 +33,8 @@ Potential improvements to the design:
 * The Java Lambdas are prone to cold starts on their initial requests. This could be mitigated with keep warm cloudwatch events or provisioned concurrency
 * The only auth is currently an API key. We could add a custom authoriser or connect to a Cognito user pool to add extra security.
 * S3 was used for storing state for simplicity but it should probably be a NoSQL DB such as DynamoDB for improved performance. Also, locking should be implemented on the DB so that two Lambda Functions can't access the coin inventory for the same vending machine at once.
+* A custom domain name should be added via Route53  
+* The bank Lambda could be changed to stream off the S3 bucket and proactively top up coin inventories rather than waiting for them to run out.
 
 ## Build and Deploy
 
