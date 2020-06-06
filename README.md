@@ -16,14 +16,15 @@ This version gets coins from a properties-file, takes requests from standard inp
 This application is also deployable as an AWS Serverless App consisting of an API Gateway, two Lambda functions, an SNS topic and an S3 Bucket.  
 
 Architecture diagram:
-![vending machine diagram](draw.io/vending-machine.png) <!-- .element height="50%" width="50%" -->
+![vending machine diagram](draw.io/vending-machine.png) <!-- .element height="50%" width="50%" -->  
 
-Send post requests to the api with a vending machine id and your required change.  
+
+The API Gateway can receive http POST requests that include a vending machine id, and the amount of change required. It passes these requests on to a Lambda Function to process.  
 The vending machine function will get the coin inventory for the given id from S3 and try to return you the optimal change.  
 If this is not possible, either because that vending machine has never been used before or has been used so much that it is out of coins then the machine will send a request via SNS for more money to be added to its inventory.  
 The bank function is subscribed to these notifications and will top up the inventory as required, so that the next customer can be served with some coins.
 
-##Non-Functional Considerations
+## Non-Functional Considerations
 * API Gateway, Lambda and S3 are all highly scalable, highly available on demand services
 * The API Gateway has a usage plan attached, with a rate-limited API key for authentication
 * IAM roles and policies are used to ensure that the app complies to the Principle of Least Priviledge - each component can only do what it needs to.
@@ -61,7 +62,7 @@ You will need to include a header of `x-api-key` with the API key to access the 
 
 The request should be of type POST and should contain fields `vendingMachineId` (type String) and `change` (type Int).
 
-###Example Request
+### Example Request
 ```
 {
 	"vendingMachineId": "123",
@@ -69,7 +70,7 @@ The request should be of type POST and should contain fields `vendingMachineId` 
 }
 ```
 
-###Example Responses
+### Example Responses
 SUCCESS:
 ```
 {
