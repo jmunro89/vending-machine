@@ -25,6 +25,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 @ExtendWith(MockitoExtension.class)
 class VendingMachineTest {
     private static final int A_PENNY = 1;
+    private static final String COIN_INVENTORY_LOCATION = "coin-inventory.properties";
 
     @Mock
     private ChangeCalculator changeCalculator;
@@ -38,7 +39,7 @@ class VendingMachineTest {
 
     @BeforeEach
     public void setup() {
-        this.vendingMachine = new VendingMachine(inventoryManager, changeCalculator);
+        this.vendingMachine = new VendingMachine(COIN_INVENTORY_LOCATION, inventoryManager, changeCalculator);
         this.coinInventory = new HashMap<>();
     }
 
@@ -50,18 +51,18 @@ class VendingMachineTest {
 
     @Test
     public void shouldCalculateUsingCoinsFromInventory() {
-        when(this.inventoryManager.getCoins()).thenReturn(coinInventory);
+        when(this.inventoryManager.getCoins(COIN_INVENTORY_LOCATION)).thenReturn(coinInventory);
 
         this.vendingMachine.getChangeFor(A_PENNY);
         verify(this.changeCalculator).calculate(A_PENNY, coinInventory);
-        verify(this.inventoryManager).getCoins();
+        verify(this.inventoryManager).getCoins(COIN_INVENTORY_LOCATION);
     }
 
     @Test
     public void shouldReturnCalculatedChange() {
         List<Coin> expectedCoins = singletonList(ONE_PENNY);
 
-        when(this.inventoryManager.getCoins()).thenReturn(coinInventory);
+        when(this.inventoryManager.getCoins(COIN_INVENTORY_LOCATION)).thenReturn(coinInventory);
         when(this.changeCalculator.calculate(A_PENNY, coinInventory)).thenReturn(expectedCoins);
 
         assertThat(vendingMachine.getChangeFor(A_PENNY)).isEqualTo(expectedCoins);
@@ -80,12 +81,12 @@ class VendingMachineTest {
         expectedUpdatedInventory.put(TWO_PENCE, 2);
         expectedUpdatedInventory.put(ONE_POUND, 1);
 
-        when(this.inventoryManager.getCoins()).thenReturn(coinInventory);
+        when(this.inventoryManager.getCoins(COIN_INVENTORY_LOCATION)).thenReturn(coinInventory);
         when(this.changeCalculator.calculate(A_PENNY, coinInventory)).thenReturn(change);
 
         this.vendingMachine.getChangeFor(A_PENNY);
 
-        verify(this.inventoryManager).setCoins(expectedUpdatedInventory);
+        verify(this.inventoryManager).setCoins(COIN_INVENTORY_LOCATION, expectedUpdatedInventory);
     }
 
 }

@@ -5,19 +5,20 @@ import java.util.Map;
 
 import com.tenx.banking.core.model.Coin;
 import com.tenx.banking.core.state.CoinInventoryManager;
-import com.tenx.banking.core.state.PropertiesFileManager;
 
 public class VendingMachine {
     private CoinInventoryManager coinInventoryManager;
     private ChangeCalculator changeCalculator;
+    private String id;
 
-    public VendingMachine(CoinInventoryManager coinInventoryManager, ChangeCalculator changeCalculator) {
+    public VendingMachine(String id, CoinInventoryManager coinInventoryManager, ChangeCalculator changeCalculator) {
         this.coinInventoryManager = coinInventoryManager;
         this.changeCalculator = changeCalculator;
+        this.id = id;
     }
 
-    public VendingMachine() {
-        this(new PropertiesFileManager(), new GreedyChangeCalculator());
+    public VendingMachine(String id, CoinInventoryManager inventoryManager) {
+        this(id, inventoryManager, new GreedyChangeCalculator());
     }
 
     public Collection<Coin> getOptimalChangeFor(int pence) {
@@ -25,10 +26,10 @@ public class VendingMachine {
     }
 
     public Collection<Coin> getChangeFor(int pence) {
-        Map<Coin, Integer> coinInventory = coinInventoryManager.getCoins();
+        Map<Coin, Integer> coinInventory = coinInventoryManager.getCoins(this.id);
         Collection<Coin> change = this.changeCalculator.calculate(pence, coinInventory);
         Map<Coin, Integer> updatedInventory = takeChangeFromInventory(coinInventory, change);
-        coinInventoryManager.setCoins(updatedInventory);
+        coinInventoryManager.setCoins(this.id, updatedInventory);
         return change;
     }
 

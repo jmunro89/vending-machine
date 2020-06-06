@@ -5,7 +5,7 @@ import java.util.Map;
 import com.tenx.banking.core.model.Coin;
 
 public interface CoinInventoryManager {
-    void setCoins(Map<Coin, Integer> coins);
+    void setCoins(String key, Map<Coin, Integer> coins);
 
-    Map<Coin, Integer> getCoins();
+    Map<Coin, Integer> getCoins(String key);
 }

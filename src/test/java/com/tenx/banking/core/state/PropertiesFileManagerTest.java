@@ -35,6 +35,7 @@ class PropertiesFileManagerTest {
     private static final String TWENTY_PENCE = "20";
     private static final String FIFTY_PENCE = "50";
     private static final String ONE_POUND = "100";
+    private static final String A_KEY = "application.properties";
 
     @Mock
     Properties properties;
@@ -56,7 +57,7 @@ class PropertiesFileManagerTest {
         when(properties.getOrDefault(FIFTY_PENCE, DEFAULT_VALUE)).thenReturn(ONE_COIN);
         when(properties.getOrDefault(ONE_POUND, DEFAULT_VALUE)).thenReturn(ONE_COIN);
 
-        Map<Coin, Integer> coins = manager.getCoins();
+        Map<Coin, Integer> coins = manager.getCoins(A_KEY);
         assertThat(coins).containsKeys(Coin.values());
         assertThat(coins).containsValue(valueOf(ONE_COIN));
 
@@ -74,7 +75,7 @@ class PropertiesFileManagerTest {
     public void shouldSetCoins() throws IOException {
         Map<Coin, Integer> coinInventory = new HashMap<>();
         coinInventory.put(Coin.TEN_PENCE, 5);
-        manager.setCoins(coinInventory);
+        manager.setCoins(A_KEY, coinInventory);
 
         verify(properties).setProperty("10", "5");
         verify(properties).store(isA(FileOutputStream.class), isNull());

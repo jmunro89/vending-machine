@@ -18,7 +18,6 @@ import org.slf4j.LoggerFactory;
 
 public class PropertiesFileManager implements CoinInventoryManager {
 
-    private static final String COIN_INVENTORY_PROPERTIES = "coin-inventory.properties";
     private static final Logger LOGGER = LoggerFactory.getLogger(PropertiesFileManager.class.getName());
     private static final String NO_COINS = "0";
 
@@ -33,9 +32,9 @@ public class PropertiesFileManager implements CoinInventoryManager {
     }
 
     @Override
-    public Map<Coin, Integer> getCoins() {
+    public Map<Coin, Integer> getCoins(String key) {
         try {
-            properties.load(new FileInputStream(COIN_INVENTORY_PROPERTIES));
+            properties.load(new FileInputStream(key));
         } catch (IOException e) {
             LOGGER.error("Failed to read properties file", e);
         }
@@ -44,10 +43,10 @@ public class PropertiesFileManager implements CoinInventoryManager {
     }
 
     @Override
-    public void setCoins(Map<Coin, Integer> coins) {
+    public void setCoins(String key, Map<Coin, Integer> coins) {
         coins.keySet().forEach(it -> properties.setProperty(valueOf(it.denomination), valueOf(coins.get(it))));
         try {
-            properties.store(new FileOutputStream(COIN_INVENTORY_PROPERTIES), null);
+            properties.store(new FileOutputStream(key), null);
         } catch (IOException e) {
             LOGGER.error("Failed to write to properties file", e);
         }

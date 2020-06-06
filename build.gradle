@@ -16,6 +16,8 @@ ext {
     assertJVersion = "3.12.0"
     mockitoVersion = "3.3.3"
     log4jVersion = "2.13.0"
+    awsVersion = "1.11.796"
+    jacksonVersion = "2.11.0"
 }
 
 dependencies {
@@ -27,6 +29,11 @@ dependencies {
     implementation "org.apache.logging.log4j:log4j-api:$log4jVersion"
     implementation "org.apache.logging.log4j:log4j-core:$log4jVersion"
     implementation "org.apache.logging.log4j:log4j-slf4j-impl:$log4jVersion"
+    implementation "com.amazonaws:aws-java-sdk-lambda:$awsVersion"
+    implementation "com.amazonaws:aws-java-sdk-s3:$awsVersion"
+    implementation "com.amazonaws:aws-java-sdk-sns:$awsVersion"
+    implementation "com.amazonaws:aws-lambda-java-events:2.2.7"
+    implementation "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion"
 }
 
 test {
