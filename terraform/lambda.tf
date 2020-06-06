@@ -15,7 +15,8 @@ resource "aws_lambda_function" "vending-machine" {
 
   environment {
     variables = {
-      TOPIC_NAME          = "arn:aws:sns:${var.aws_region}:${var.aws_account_id}:banking-requests"
+      TOPIC_NAME = "arn:aws:sns:${var.aws_region}:${var.aws_account_id}:banking-requests"
+      BUCKET_NAME = var.bucket_name
     }
   }
 
@@ -35,7 +36,11 @@ resource "aws_lambda_function" "bank" {
   timeout          = "60"
   publish          = true
   source_code_hash = filebase64sha256("../build/libs/${var.artifact_name}")
-
+  environment {
+    variables = {
+      BUCKET_NAME = var.bucket_name
+    }
+  }
 }
 
 resource "aws_sns_topic_subscription" "banking-requests" {

@@ -1,4 +1,4 @@
 resource "aws_s3_bucket" "vending-machine-bucket" {
-  bucket = "10x-vending-machine"
+  bucket = var.bucket_name
   acl    = "private"
 }

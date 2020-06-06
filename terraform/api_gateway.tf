@@ -57,10 +57,6 @@ data "aws_iam_policy_document" "vending_machine_policy" {
   }
 }
 
-output "api_endpoint" {
-  value = aws_api_gateway_deployment.vending_machine.invoke_url
-}
-
 output "aws_api_gateway_stage-vending_machine-invoke_url" {
-  value = aws_api_gateway_stage.vending_machine.invoke_url
+  value = "${aws_api_gateway_stage.vending_machine.invoke_url}/${aws_api_gateway_resource.vending_machine.path_part}"
 }

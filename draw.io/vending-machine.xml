@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2020-06-06T21:09:13.519Z" agent="5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36" etag="ZRdxMtNlDAPhl9T1Bqqd" version="13.1.14">
+  <diagram id="8rzgGoyTbHl9R0Emr4gU" name="Page-1">
+    <mxGraphModel dx="825" dy="437" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="v0B_xapVO35uS1arBYkv-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=none;startFill=0;" edge="1" parent="1" source="v0B_xapVO35uS1arBYkv-1" target="v0B_xapVO35uS1arBYkv-4">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="645" y="329" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="v0B_xapVO35uS1arBYkv-1" value="" style="outlineConnect=0;fontColor=#232F3E;gradientColor=#F78E04;gradientDirection=north;fillColor=#D05C17;strokeColor=#ffffff;dashed=0;verticalLabelPosition=top;verticalAlign=bottom;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lambda;labelPosition=center;" vertex="1" parent="1">
+          <mxGeometry x="606" y="147" width="78" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="v0B_xapVO35uS1arBYkv-30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=none;startFill=0;" edge="1" parent="1" source="v0B_xapVO35uS1arBYkv-2" target="v0B_xapVO35uS1arBYkv-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="v0B_xapVO35uS1arBYkv-2" value="" style="outlineConnect=0;dashed=0;verticalLabelPosition=top;verticalAlign=bottom;align=center;html=1;shape=mxgraph.aws3.sns;fillColor=#D9A741;gradientColor=none;labelPosition=center;" vertex="1" parent="1">
+          <mxGeometry x="467.5" y="147.75" width="76.5" height="76.5" as="geometry" />
+        </mxCell>
+        <mxCell id="v0B_xapVO35uS1arBYkv-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=none;startFill=0;" edge="1" parent="1" source="v0B_xapVO35uS1arBYkv-3" target="v0B_xapVO35uS1arBYkv-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="v0B_xapVO35uS1arBYkv-3" value="" style="outlineConnect=0;fontColor=#232F3E;gradientColor=#F78E04;gradientDirection=north;fillColor=#D05C17;strokeColor=#ffffff;dashed=0;verticalLabelPosition=top;verticalAlign=bottom;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lambda;labelPosition=center;" vertex="1" parent="1">
+          <mxGeometry x="316" y="147" width="78" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="v0B_xapVO35uS1arBYkv-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=none;startFill=0;" edge="1" parent="1" source="v0B_xapVO35uS1arBYkv-4" target="v0B_xapVO35uS1arBYkv-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="v0B_xapVO35uS1arBYkv-4" value="" style="outlineConnect=0;fontColor=#232F3E;gradientColor=#60A337;gradientDirection=north;fillColor=#277116;strokeColor=#ffffff;dashed=0;verticalLabelPosition=top;verticalAlign=bottom;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.s3;labelPosition=center;" vertex="1" parent="1">
+          <mxGeometry x="466" y="290" width="78" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="v0B_xapVO35uS1arBYkv-28" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=none;startFill=0;" edge="1" parent="1" source="v0B_xapVO35uS1arBYkv-14" target="v0B_xapVO35uS1arBYkv-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="v0B_xapVO35uS1arBYkv-14" value="" style="outlineConnect=0;fontColor=#232F3E;gradientColor=#F54749;gradientDirection=north;fillColor=#C7131F;strokeColor=#ffffff;dashed=0;verticalLabelPosition=top;verticalAlign=bottom;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.api_gateway;labelPosition=center;" vertex="1" parent="1">
+          <mxGeometry x="176" y="147" width="78" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="v0B_xapVO35uS1arBYkv-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=none;startFill=0;" edge="1" parent="1" source="v0B_xapVO35uS1arBYkv-16" target="v0B_xapVO35uS1arBYkv-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="v0B_xapVO35uS1arBYkv-16" value="Vending Machine" style="shape=image;html=1;verticalAlign=bottom;verticalLabelPosition=top;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=https://cdn0.iconfinder.com/data/icons/city-elements-flaticon/64/vending_machine-snacks-beverages-food_and_restaurant-drinks-food-technology-128.png;labelPosition=center;align=center;" vertex="1" parent="1">
+          <mxGeometry y="122" width="128" height="128" as="geometry" />
+        </mxCell>
+        <mxCell id="v0B_xapVO35uS1arBYkv-20" value="vending-machine&lt;br&gt;&amp;nbsp;Lambda" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="1">
+          <mxGeometry x="300" y="117" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="v0B_xapVO35uS1arBYkv-21" value="banking-requests&lt;br&gt;SNS" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="1">
+          <mxGeometry x="450" y="117" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="v0B_xapVO35uS1arBYkv-24" value="vending-machine&lt;br&gt;API Gateway" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="1">
+          <mxGeometry x="160" y="110" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="v0B_xapVO35uS1arBYkv-25" value="bank&lt;br&gt;Lambda" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="1">
+          <mxGeometry x="615" y="117" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="v0B_xapVO35uS1arBYkv-26" value="bank&lt;br&gt;S3 Bucket" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="1">
+          <mxGeometry x="470" y="260" width="70" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

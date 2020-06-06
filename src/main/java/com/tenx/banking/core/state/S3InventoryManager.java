@@ -1,6 +1,7 @@
 package com.tenx.banking.core.state;
 
 import static java.lang.String.format;
+import static java.lang.System.getenv;
 
 import static com.amazonaws.regions.Regions.EU_WEST_1;
 import static com.tenx.banking.core.model.Coin.coins;
@@ -20,9 +21,9 @@ import org.slf4j.LoggerFactory;
 
 public class S3InventoryManager implements CoinInventoryManager {
     private static final String PATH_FORMAT = "coin-inventory/%s";
-    private static final String BUCKET_NAME = "10x-vending-machine";
-    private AmazonS3 s3;
-    private ObjectMapper objectMapper;
+    private static final String BUCKET_NAME = "BUCKET_NAME";
+    private final AmazonS3 s3;
+    private final ObjectMapper objectMapper;
     private static final Logger LOGGER = LoggerFactory.getLogger(S3InventoryManager.class.getName());
 
     public S3InventoryManager(AmazonS3 s3, ObjectMapper objectMapper) {
@@ -41,7 +42,7 @@ public class S3InventoryManager implements CoinInventoryManager {
     public void setCoins(String key, Map<Coin, Integer> coins) {
         try {
             LOGGER.info(String.format("Storing coins: %s to key %s", coins, key));
-            s3.putObject(BUCKET_NAME, format(PATH_FORMAT, key), objectMapper.writeValueAsString(coins));
+            s3.putObject(getenv(BUCKET_NAME), format(PATH_FORMAT, key), objectMapper.writeValueAsString(coins));
         } catch (JsonProcessingException e) {
             LOGGER.error("Failed to map coin inventory to json", e);
         } catch (AmazonS3Exception e) {
@@ -51,8 +52,8 @@ public class S3InventoryManager implements CoinInventoryManager {
 
     @Override
     public Map<Coin, Integer> getCoins(String key) {
-        if (s3.doesObjectExist(BUCKET_NAME, format(PATH_FORMAT, key))) {
-            String result = s3.getObjectAsString(BUCKET_NAME, format(PATH_FORMAT, key));
+        if (s3.doesObjectExist(getenv(BUCKET_NAME), format(PATH_FORMAT, key))) {
+            String result = s3.getObjectAsString(getenv(BUCKET_NAME), format(PATH_FORMAT, key));
             try {
                 return objectMapper.readValue(result, new TypeReference<Map<Coin, Integer>>() {});
             } catch (JsonProcessingException e) {
