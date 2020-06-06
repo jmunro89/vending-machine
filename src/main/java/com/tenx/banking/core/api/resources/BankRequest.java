@@ -13,6 +13,10 @@ public class BankRequest {
         this.coinsRequested = coinsRequested;
     }
 
+//    Default constructor required for deserialisation in lambda
+    public BankRequest() {
+    }
+
     public String getVendingMachineId() {
         return vendingMachineId;
     }

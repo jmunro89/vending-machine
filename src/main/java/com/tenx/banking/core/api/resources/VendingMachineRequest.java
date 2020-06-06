@@ -13,11 +13,11 @@ public class VendingMachineRequest {
     public int getChange() {
         return change;
     }
-
-    public VendingMachineRequest(String vendingMachineId, int change) {
-        this.vendingMachineId = vendingMachineId;
-        this.change = change;
-    }
+//
+//    public VendingMachineRequest(String vendingMachineId, int change) {
+//        this.vendingMachineId = vendingMachineId;
+//        this.change = change;
+//    }
 
     @Override
     public String toString() {

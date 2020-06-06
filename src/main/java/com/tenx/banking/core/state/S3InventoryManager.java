@@ -3,7 +3,9 @@ package com.tenx.banking.core.state;
 import static java.lang.String.format;
 
 import static com.amazonaws.regions.Regions.EU_WEST_1;
+import static com.tenx.banking.core.model.Coin.coins;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import com.amazonaws.services.s3.AmazonS3;
@@ -18,11 +20,10 @@ import org.slf4j.LoggerFactory;
 
 public class S3InventoryManager implements CoinInventoryManager {
     private static final String PATH_FORMAT = "coin-inventory/%s";
-    private static final String BUCKET_NAME = "vending-machine";
+    private static final String BUCKET_NAME = "10x-vending-machine";
     private AmazonS3 s3;
     private ObjectMapper objectMapper;
     private static final Logger LOGGER = LoggerFactory.getLogger(S3InventoryManager.class.getName());
-
 
     public S3InventoryManager(AmazonS3 s3, ObjectMapper objectMapper) {
         this.s3 = s3;
@@ -58,6 +59,12 @@ public class S3InventoryManager implements CoinInventoryManager {
                 e.printStackTrace();
             }
         }
-        return null;
+        return emptyInventory();
+    }
+
+    private Map<Coin, Integer> emptyInventory() {
+        Map<Coin, Integer> coins = new HashMap<>();
+        coins().forEach(coin -> coins.put(coin, 0));
+        return coins;
     }
 }
